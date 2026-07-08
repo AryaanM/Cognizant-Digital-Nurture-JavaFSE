@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.1'
+}
+
+group = 'com.cognizant'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 1. Lock in the Spring Boot versions manually
+    implementation platform('org.springframework.boot:spring-boot-dependencies:3.3.1')
+    
+    // 2. Lock in the Spring Cloud versions manually
+    implementation platform('org.springframework.cloud:spring-cloud-dependencies:2023.0.2')
+    
+    // 3. Now Gradle knows exactly what versions these are!
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+}
